@@ -1,0 +1,159 @@
+.top {
+    position: sticky;
+    top: 0;
+    min-width: 1200px;
+    background: #FFF;
+    width: 100%;
+    height: 60px;
+    z-index: 9999;
+}
+
+.top .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 95%;
+    height: 100%;
+}
+
+.top .left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.top .left .nav {
+    height: 100%;
+    margin-left: 5px;
+}
+
+.top .left .nav .navItem {
+    float: left;
+    margin-left: 30px;
+    /* position: relative; */
+}
+
+.top .left .nav .navItem:hover {
+    transition: all 0.1s ease-in-out;
+    border-bottom: 4px solid #E12726;
+}
+
+.top .select {
+    /* 下拉修改这里 */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #f4f4f4;
+    /* z-index: 999; */
+    animation:showSelected 0.5s; animation-fill-mode:forwards;
+}
+@keyframes showSelected{ from{ opacity: 0;} to{opacity: 1;} }
+.select_hover {
+    display: block !important;
+}
+
+.select .selectNav {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.select .selectNav .childItem {
+
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    height: 70px;
+    padding-right: 64px;
+
+}
+
+.childItem p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 68px;
+}
+.childItem_hover>p {
+    border-bottom: 2px solid #e12726;
+}
+.select .selectNav .childItem .detail {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    /* height: 70px; */
+    background: #FFF;
+}
+.detailList {
+    /* display: none; */
+    margin-right: 1000px;
+    display: flex;
+    flex-direction: column;
+
+}
+.top .right .nav>div {
+    float: left;
+    margin-left: 30px;
+}
+
+.navItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 93%;
+    font-size: 16px;
+    color: #252525;
+}
+
+.top .right .nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightText {
+    color: #404040;
+    font-size: 14px;
+}
+
+.top .right .login {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.shopCar {
+    position: relative;
+    margin-left: 20px !important;
+}
+
+.redDot {
+    font-size: 12px;
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    line-height: 18px;
+    padding-left: 2px;
+    top: -13px;
+    text-align: center;
+    background: red;
+    border-radius: 50% 50% 50% 0;
+    left: 24px;
+    color: #fff;
+}

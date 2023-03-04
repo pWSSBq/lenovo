@@ -1,0 +1,127 @@
+
+.topBox {
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tab_top {
+    width: 80%;
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.tab_top_title {
+    position: relative;
+    padding: 20px 0;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: bold;
+    color: #454545;
+}
+.tab_top_title_hover {
+    color: #000;
+}
+.tab_top_title_hover i {
+    display: inline-block;
+    width: 100px;
+    height: 3px;
+    background-color: #e1140a;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.tab_main {
+    background: #f7f7f7;
+}
+.tab_nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.tab_nav_item {
+    width: 12%;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.tab_nav_item_name {
+    color: #707070;
+    font-size: 13px;
+}
+.tab_nav_item>img {
+    width: 44px;
+    height: 44px;
+}
+@media screen and (min-width: 1700px) {
+    .container,
+    .tab_top{
+        width: 1600px;
+    }
+}
+
+.tab_itemList {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tab_item {
+    width: 24%;
+    height: 400px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+.tab_item:hover {
+    box-shadow: 0 0 10px #e5e5e5;
+    transition: all 0.3s;
+}
+.tab_item>img {
+    width: 190px;
+    height: 190px;
+    padding-top: 30px;
+    margin: 0 auto;
+}
+.tab_item_name {
+    height: 29px;
+    font-size: 20px;
+    color: #252525;
+    text-align: center;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+}
+.tab_item_tip {
+    height: 36px;
+    opacity: .6;
+    font-size: 12px;
+    color: #5f5f5f;
+    text-align: center;
+    line-height: 18px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin: 13px auto 13px;
+    padding: 0 49px;
+}
+.tab_item_price {
+    height: 18px;
+    font-size: 20px;
+    color: #252525;
+    text-align: center;
+    font-weight: 400;
+}
+

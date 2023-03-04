@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="./top.css">
+    <link rel="stylesheet" href="./banner.css">
+    <link rel="stylesheet" href="./tab.css">
+    <link rel="stylesheet" href="./news.css">
+    <link rel="stylesheet" href="./commonweal.css">
+    <link rel="stylesheet" href="./success.css">
+    <link rel="stylesheet" href="./hot.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    body {
+        background: #f7f7f7;
+        /* overflow: hidden; */
+        height: 100%;
+    }
+
+    a {
+        color: black;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .btnBox {
+        width: 95%;
+        height: 50px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    .part_title {
+        font-size: 32px;
+        color: #252525;
+        font-weight: bold;
+    }
+
+    .more {
+        color: #606060;
+        line-height: 46px;
+        cursor: pointer;
+    }
+
+    .btn {
+        position: absolute;
+        cursor: pointer;
+        width: 50px;
+        height: 100%;
+    }
+
+    .btn_pre {
+        position: absolute;
+        left: 0;
+    }
+
+    .btn_next {
+        position: absolute;
+        right: 0;
+    }
+
+    .mask {
+        position: fixed;
+        display: none;
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .4);
+        z-index: 999;
+        
+    }
+    .mask_block {
+        display: block;
+    }
+</style>
+<script>
+    //封装的轮播图动画函数
+    function animate(ele, target) {
+        console.log('animate运行')
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            let step = (target - ele.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            ele.style.marginLeft = ele.offsetLeft + step + 'px';
+            if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {
+                ele.style.marginLeft = target + 'px';
+                clearInterval(ele.timer);
+            }
+        }, 8);
+    }
+</script>
+
+<body>
+    <div class="top">
+        <div class="main">
+            <div class="left">
+                <div class="logo">
+                    <a href="https://www.lenovo.com.cn">
+                        <img src="https://p4.lefile.cn/fes/cms/2021/09/24/skz7mq0zavm0hd8xfaq0nrofxcwje3959207.png"
+                            alt="" style="width: 173px;height: 35px;">
+                    </a>
+                </div>
+                <div class="nav">
+                    <div class="navItem">
+                        <span><a href="#">商城</a></span>
+                        <div class="select">
+                            <ul class="selectNav">
+                                <li class="childItem childItem_hover">
+                                    <p>
+                                        <a href="#"><span>Lenovo电脑</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>ThinkPad电脑</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>平板电脑</span></a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navItem">
+                        <a href="#">企业购</a>
+                        <div class="select">
+                            <ul class="selectNav">
+                                <li class="childItem childItem_hover">
+                                    <p>
+                                        <a href="#"><span>笔记本</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>台式机</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>服务器</span></a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navItem">
+                        <a href="#">政教及大企业</a>
+                        <div class="select">
+                            <ul class="selectNav">
+                                <li class="childItem childItem_hover">
+                                    <p>
+                                        <a href="#"><span>笔记本</span></a>
+                                    </p>
+
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>台式机</span></a>
+                                    </p>
+
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>工作站</span></a>
+                                    </p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navItem">
+                        <a href="#">服务</a>
+                        <div class="select">
+                            <ul class="selectNav">
+                                <li class="childItem childItem_hover">
+                                    <p>
+                                        <a href="#"><span>个人服务及支持</span></a>
+                                    </p>
+
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>中小企业服务及方案</span></a>
+                                    </p>
+
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>政教及大企业服务</span></a>
+                                    </p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navItem">
+                        <a href="#">品牌</a>
+                        <div class="select">
+                            <ul class="selectNav">
+                                <li class="childItem childItem_hover">
+                                    <p>
+                                        <a href="#"><span>品牌故事</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>生态体系</span></a>
+                                    </p>
+                                </li>
+                                <li class="childItem">
+                                    <p>
+                                        <a href="#"><span>成功案例</span></a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="nav">
+                    <div class="rightText">
+                        会员
+                    </div>
+                    <div class="rightText">
+                        社区
+                    </div>
+                    <div class="rightText">
+                        购买
+                        <img src="https://p4.lefile.cn/fes/cms/2021/09/16/yg30afr1f8iqyhhyx06r6dj9mqq6jn413059.png"
+                            alt="" style="width: 12px;vertical-align: middle;">
+                    </div>
+                    <div class="search">
+                        <img style="margin-left: 15px;width: 22px;cursor: pointer;vertical-align: middle;"
+                            src="https://p2.lefile.cn/product/adminweb/2018/11/07/357aac65-7c0e-45d8-a10d-c317da3abbde.png">
+                    </div>
+                    <div class="login">
+                        <div class="rightText" style="padding-right: 4px;border-right: 1.3px solid #CCC;">
+                            登录
+                        </div>
+                        <div class="rightText" style="padding-left: 3.9px;border-left: 1.4px solid #CCC;">
+                            注册
+                        </div>
+                    </div>
+                    <div class="shopCar">
+                        <a href="#">
+                            <img style="width: 24px;height: 24px;"
+                                src="https://p4.lefile.cn/product/adminweb/2018/11/07/b789b6bc-b958-467c-bd78-8cc616f39f1f.png">
+                        </a>
+                        <div class="redDot">
+                            0
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="mask"></div>
+    <!-- banner轮播图 -->
+    <div class="banner">
+        <div class="banner_swiper">
+            <ul class="banner_swiper_ul">
+                <li class="banner_swiper_li">
+                    <img src="https://p2.lefile.cn/fes/cms/2023/02/23/abzxtazgspm74vdylukl3da2f4rcf6409889.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p3.lefile.cn/fes/cms/2023/02/15/5ge9z34sfnjuscqhvi94b6l3350ov3634867.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p2.lefile.cn/fes/cms/2023/02/14/tb0pxb2eahyv6ykqxlcucedxt84v01212413.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p2.lefile.cn/fes/cms/2023/02/07/gnpvgg91houcxbfprzyelztgcsjxjv411019.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p1.lefile.cn/fes/cms/2023/01/31/f6qo6ofs8welexqfg37dh8wtbyfms6299021.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p3.lefile.cn/fes/cms/2023/02/17/jyu3zxza45ri0sjwc1pqfjfz9fdm9a166141.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p4.lefile.cn/fes/cms/2023/02/13/7ndoraj8qhc3fzc4aulhekm9gm1mqd032965.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p3.lefile.cn/fes/cms/2023/02/15/6uq8cyyms8lwdujjr40yf4x1qkb26g442982.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p2.lefile.cn/fes/cms/2023/02/23/d0iihqy7eg1le1wwvm3xygua9wq01d241065.jpg" alt="">
+                </li>
+                <li class="banner_swiper_li">
+                    <img src="https://p1.lefile.cn/fes/cms/2023/02/17/u4a78j5y7hqyd6z7txoomnb2nu7rj7055259.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="btnBox" style="width: 100%;z-index: 999;">
+            <span class="btn btn_pre" onclick="banner_pre()"><img src="../lenovo-assets/arrow-left-bold.png" alt=""></span>
+            <span class="btn btn_next" onclick="banner_next()"><img src="../lenovo-assets/arrow-right-bold.png" alt=""></span>
+        </div>
+        <div class="banner_dot_container">
+            <span>
+                <i class="banner_dot_selected">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+            <span>
+                <i class="banner_dot">
+                </i>
+            </span>
+        </div>
+    </div>
+    <!-- 产品 -->
+    <div class="topBox">
+        <div class="tab_top">
+            <div class="tab_top_title tab_top_title_hover">
+                <p>
+                    个人及家庭产品
+                </p>
+                <i></i>
+            </div>
+            <div class="tab_top_title">
+                <p>
+                    中小企业产品
+                </p>
+                <i></i>
+            </div>
+            <div class="tab_top_title">
+                <p>
+                    政教及大企业产品
+                </p>
+                <i></i>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin: 0 auto;">
+        <div class="tab_main" style="display: block;">
+            <div class="tab_nav">
+                <div class="tab_nav_item">
+                    <img style="display: none;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: block;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+            </div>
+            <div class="tab_itemList">
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p4.lefile.cn/fes/cms/2022/08/09/43t5lu7uimz0yfixa7ikyr65m7r13b322121.png" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p3.lefile.cn/fes/cms/2023/02/23/6be7xxndgp901hlrldfn79z89ja1ld721986.png" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p2.lefile.cn/fes/cms/2023/02/15/irof6xtw9xdh7oym2k1aoi1znlcvap413487.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p1.lefile.cn/fes/cms/2023/02/15/86uo4k3bz718e0w5jdiicynkhjez0m638977.png" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="tab_main" style="display: none;">
+            <div class="tab_nav">
+                <div class="tab_nav_item">
+                    <img style="display: none;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: block;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+            </div>
+            <div class="tab_itemList">
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p2.lefile.cn/fes/cms/2023/02/21/gy20jnkyed0qeupecr9sfztr4hs2ro954597.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p2.lefile.cn/fes/cms/2023/02/21/0zqpnvifcfl2egv7hfb5xku8xqprr3990246.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p1.lefile.cn/fes/cms/2023/02/21/vrmtmoahyksmla71ax6mflgez6yd9g113223.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p1.lefile.cn/fes/cms/2023/02/21/q6ajgmdalzc0f9lncs9sh0f92h9r41866790.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="tab_main" style="display: none;">
+            <div class="tab_nav">
+                <div class="tab_nav_item">
+                    <img style="display: none;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: block;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+                <div class="tab_nav_item">
+                    <img style="display: block;"
+                    src="https://p4.lefile.cn/fes/cms/2021/11/17/kwj5b52k01h5cbx5p7yl926ohwvfso016841.png" alt="">
+                    <img style="display: none;"
+                        src="https://p3.lefile.cn/fes/cms/2021/11/17/pgmswj7bbowb0zpuaanavhl68rvpzk229241.png" alt="">
+                    <p class="tab_nav_item_name">Lenovo台式机</p>
+                </div>
+            </div>
+            <div class="tab_itemList">
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p3.lefile.cn/fes/cms/2022/10/21/sxeck1iqrg3e3xa146972jljyf98wl766424.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p4.lefile.cn/fes/cms/2022/10/21/cepbbfj1fvigg4hsfaoxu0ubqe2r88795184.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p4.lefile.cn/fes/cms/2022/10/21/xtne4cg2pk2iznrexek5pfptu793zj417831.jpg" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+                <div class="tab_item">
+                    <img style="width: 190px;height: 190px;"
+                        src="https://p1.lefile.cn/fes/cms/2022/10/21/kslxs7x9z99892dldrtnpoxle05t7c607796.png" alt="">
+                    <p class="tab_item_name">拯救者 刃7000P</p>
+                    <p class="tab_item_tip">
+                        RYZEN_7_5800/Windows 11 家庭中文版/16G/ 512G SSD/RTX3060 LHR 12GB/黑色
+                    </p>
+                    <p class="tab_item_price">
+                        <span style="font-size:12px">￥</span>
+                        <span>6999</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 新闻中心 -->
+    <div class="container">
+        <div class="news">
+            <div class="news_top">
+                <div class="news_title part_title">
+                    新闻中心
+                </div>
+                <div class="news_more more">
+                    更多 >
+                </div>
+            </div>
+            <div class="news_main">
+                <div class="news_swiper" id="news_swiper">
+                    <ul class="news_swiper_ul">
+                        <li class="news_swiper_li"><img style="width: 1064px;height: 630px;"
+                                src="https://p2.lefile.cn/fes/cms/2023/02/09/grzysqp9pl2gl4tzsnjbi4n5pddrjb758681.jpg"
+                                alt=""></li>
+                        <li class="news_swiper_li"><img style="width: 1064px;height: 630px;"
+                                src="https://p2.lefile.cn/fes/cms/2023/01/12/xro1hv6xuzcs4t7h5tp89bwuf1kfoa525207.png"
+                                alt=""></li>
+                        <li class="news_swiper_li"><img style="width: 1064px;height: 630px;"
+                                src="https://p1.lefile.cn/fes/cms/2023/01/12/rmt4lq8z9rjazox92tpoxp1m7hlhxe349216.png"
+                                alt=""></li>
+                    </ul>
+                </div>
+                <div class="news_nav">
+                    <div class="news_nav_card news_nav_card_active">
+                        <div class="news_nav_card_left news_nav_card_left_active">
+                            01
+                        </div>
+                        <div class="news_nav_card_right">
+                            <p class="card_title">
+                                联想问天重磅发布：助力企业加速构建数字底座
+                            </p>
+                            <p class="card_tips">
+                                联想问天品牌+联想ThinkSystem 锻造两大强劲算力服务引擎 夯实智能化转型核心基石 助力企业加速构建数字底座 实现智能化转型 联想问天的正式发布
+                                也将助力联想在5年内冲击中国服务器市场第一
+                            </p>
+                            <p class="card_time">
+                                2023年2月8日
+                            </p>
+                        </div>
+                    </div>
+                    <div class="news_nav_card">
+                        <div class="news_nav_card_left">
+                            02
+                        </div>
+                        <div class="news_nav_card_right">
+                            <p class="card_title">
+                                联想与中国信通院联合发布《中国企业智能化成熟度报告（2022）》
+                            </p>
+                            <p class="card_tips">
+                                1月11日，联想集团联合中国信息通信研究院在北京举办主题为“铸造数字底座，加速智能转型”的发布会，共同发布《中国企业智能化成熟度报告（2022）》（以下简称《报告》），并推出企业智能化转型框架和企业智能化成熟度模型，旨在打造中国企业智能化转型的“米其林”标准。
+                            </p>
+                            <p class="card_time">
+                                2023年1月11日
+                            </p>
+                        </div>
+                    </div>
+                    <div class="news_nav_card">
+                        <div class="news_nav_card_left">
+                            03
+                        </div>
+                        <div class="news_nav_card_right">
+                            <p class="card_title">
+                                2023，普慧算力让世界崭新有力
+                            </p>
+                            <p class="card_tips">
+                                1月4日，联想开年大片《万有新力》正式上线。视频中，一个个鲜活而又打动人心的镜头故事，向人们讲述了计算力正以其无处不在和智慧赋能，为经济发展、百姓生活带来更多的确定性和可能，以温度燃起人们对未来的渴望。
+                            </p>
+                            <p class="card_time">
+                                2023年1月4日
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 联想公益 -->
+    <div class="container">
+        <div class="commonweal">
+            <div class="commonweal_top">
+                <div class="part_title">
+                    联想公益
+                </div>
+                <div class="more">
+                    更多 >
+                </div>
+            </div>
+            <div class="commonweal_main">
+                <div class="commonweal_swiper">
+                    <div class="commonweal_swiper_item left">
+                        <img class=""
+                            src="https://p1.lefile.cn/fes/cms/2023/01/12/rmt4lq8z9rjazox92tpoxp1m7hlhxe349216.png"
+                            alt="">
+                    </div>
+                    <div class="commonweal_swiper_item center">
+                        <img class=""
+                            src="https://p2.lefile.cn/fes/cms/2023/01/12/xro1hv6xuzcs4t7h5tp89bwuf1kfoa525207.png"
+                            alt="">
+                    </div>
+                    <div class="commonweal_swiper_item right">
+                        <img class=""
+                            src="https://p2.lefile.cn/fes/cms/2023/02/09/grzysqp9pl2gl4tzsnjbi4n5pddrjb758681.jpg"
+                            alt="">
+                    </div>
+                </div>
+                <div class="btnBox" style="width: 98%;">
+                    <span class="btn btn_pre" onclick="commonweal_pre()"><img src="../lenovo-assets/arrow-left-bold.png"
+                            alt=""></span>
+                    <span class="btn btn_next" onclick="commonweal_next()"><img src="../lenovo-assets/arrow-right-bold.png"
+                            alt=""></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 成功案例 -->
+    <div class="container">
+        <div class="success">
+            <div class="success_top">
+                <div class="part_title">
+                    成功案例
+                </div>
+                <div class="more">
+                    更多 >
+                </div>
+            </div>
+            <div class="success_swiper" id="success_swiper">
+                <ul class="success_swiper_ul">
+                    <li class="success_swiper_li"><img src="../lenovo-assets/success0.jpg" alt=""></li>
+                    <li class="success_swiper_li"><img src="../lenovo-assets/success1.jpg" alt=""></li>
+                    <li class="success_swiper_li"><img src="../lenovo-assets/success2.jpg" alt=""></li>
+                    <li class="success_swiper_li"><img src="../lenovo-assets/success3.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="success_nav">
+                <div class="success_nav_box blue">
+                    <div class="success_box_title edu">
+                        智慧教育
+                    </div>
+                    <div class="success_box_content">
+                        如何冲破环境恶劣、低IT维护水平阻力？
+                    </div>
+                </div>
+                <div class="success_nav_box red">
+                    <div class="success_box_title">
+                        智慧交通
+                    </div>
+                    <div class="success_box_content">
+                        如何改善交通管理，构建更智慧的交通体系？
+                    </div>
+                </div>
+                <div class="success_nav_box purple">
+                    <div class="success_box_title">
+                        智慧城市
+                    </div>
+                    <div class="success_box_content">
+                        如何融合城市地域特色 引擎新型智慧城市发展？
+                    </div>
+                </div>
+                <div class="success_nav_box orange">
+                    <div class="success_box_title">
+                        智慧制造
+                    </div>
+                    <div class="success_box_content">
+                        如何通过精准化节能与降碳提升行业竞争力？
+                    </div>
+                </div>
+            </div>
+            <div class="btnBox" style="width: 98%;">
+                <span class="btn btn_pre" onclick="success_pre(current_success)"><img src="../lenovo-assets/arrow-left-bold.png"
+                        alt=""></span>
+                <span class="btn btn_next" onclick="success_next(current_success)"><img
+                        src="../lenovo-assets/arrow-right-bold.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+    <!-- 热门推荐 -->
+    <div class="container">
+        <div class="hot">
+            <div class="hot_top">
+                <div class="part_title">
+                    热门推荐
+                </div>
+                <div class="more">
+                    <div class="hot_pre" onclick="hot_prev()">
+
+                    </div>
+                    <div class="hot_next" onclick="hot_next()">
+
+                    </div>
+                </div>
+            </div>
+            <div class="hot_main">
+                <div class="hot_nav">
+                    <ul class="hot_ul">
+                        <div class="hot_item hot_item_hover" onmouseover="hot_change(0)">
+                            <li class="hot_li">
+                                联想电脑管家
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(1)">
+                            <li class="hot_li">
+                                以思考进化时代
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(2)">
+                            <li class="hot_li">
+                                线下门店查询
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(3)">
+                            <li class="hot_li">
+                                小新家族新品上市
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(4)">
+                            <li class="hot_li">
+                                元宇宙 焕新季
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(5)">
+                            <li class="hot_li">
+                                企业新动力
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(6)">
+                            <li class="hot_li">
+                                ThinkBook家族新品
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(7)">
+                            <li class="hot_li">
+                                联想企业购
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(8)">
+                            <li class="hot_li">
+                                联想社区
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                        <div class="hot_item" onmouseover="hot_change(9)">
+                            <li class="hot_li">
+                                Windows 11
+                            </li>
+                            <img src="https://p4.lefile.cn/fes/cms/2021/11/16/z39zs4eds05wvv4xkrxl37fbwzlpqe497933.png
+                            " alt="">
+                        </div>
+                    </ul>
+                </div>
+                <div class="hot_swiper_container">
+                    <div class="hot_swiper">
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p3.lefile.cn/fes/cms/2021/11/18/cj22wqynk30xo8ra3gppuhxv7fafhl525719.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    联想电脑管家
+                                </p>
+                                <p class="hot_content_tip">
+                                    专业工程师，为您解决问题
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p1.lefile.cn/fes/cms/2021/11/18/vyqzc7988bfgg1n3iuecvj6vuvhmei413482.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    以思考进化时代
+                                </p>
+                                <p class="hot_content_tip">
+                                    一切尽在ThinkPad官网
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p4.lefile.cn/fes/cms/2021/11/18/x8n1lgq6sisnmn5hezgj8vtrfod98c421436.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    线下门店查询
+                                </p>
+                                <p class="hot_content_tip">
+                                    寻找身边销售网点
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p3.lefile.cn/fes/cms/2023/02/15/ansotz32dluht1p8k6wooagtdshz8x620966.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    小新家族新品上市
+                                </p>
+                                <p class="hot_content_tip">
+                                    多彩生活会发光
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p1.lefile.cn/fes/cms/2023/02/10/0mmh5j621n1fmedh88g9c7zpmzz4b2098780.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    元宇宙 焕新季
+                                </p>
+                                <p class="hot_content_tip">
+                                    2023联想焕新季
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item">
+                            <img class=""
+                                src="https://p2.lefile.cn/fes/cms/2023/02/21/8nnlags49ct8exhoidd8rgdg3bz4ew285393.png"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    企业新动力
+                                </p>
+                                <p class="hot_content_tip">
+                                    提交项目意向单免费领取开工礼包
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item ">
+                            <img class=""
+                                src="https://p3.lefile.cn/fes/cms/2023/02/14/i10tt2yprhqa4g91d5vo5sghg9lcnt051640.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    ThinkBook家族新品
+                                </p>
+                                <p class="hot_content_tip">
+                                    新品上市
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item ">
+                            <img class=""
+                                src="https://p1.lefile.cn/fes/cms/2023/01/31/82doahdczla167ya0t5ig7p353smsi493288.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    联想企业购
+                                </p>
+                                <p class="hot_content_tip">
+                                    开工大吉焕新机
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item ">
+                            <img class=""
+                                src="https://p1.lefile.cn/fes/cms/2021/11/18/hyni6oak6iowrtmq4sd5lsp962w34h219772.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    联想社区
+                                </p>
+                                <p class="hot_content_tip">
+                                    想点不一样
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hot_swiper_item ">
+                            <img class=""
+                                src="https://p2.lefile.cn/fes/cms/2021/11/18/b2qgeu891k7n3ukanyd4fqnup228x8889591.jpg"
+                                alt="">
+                            <div class="hot_item_content">
+                                <p class="hot_content_title">
+                                    Windows 11
+                                </p>
+                                <p class="hot_content_tip">
+                                    与你所爱，更近一步
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="./top.js" defer=true type="text/javascript"></script>
+    <script src="./tab.js" defer=true type="text/javascript"></script>
+    <script src="./banner.js" defer=true type="text/javascript"></script>
+    <script src="./hot.js" defer=true type="text/javascript"></script>
+    <script src="./success.js" defer=true type="text/javascript"></script>
+    <script src="./commonweal.js" defer=true type="text/javascript"></script>
+    <script src="./news.js" defer=true type="text/javascript"></script>
+</body>
+
+</html>
